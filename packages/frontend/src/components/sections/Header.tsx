@@ -85,7 +85,7 @@ const Header: FC = memo(() => {
             />
         </svg>
     );
-    const excludeNavSections = [...HearderMenuData.filter((item) => item.id !== 4)];
+    const excludeNavSections = [...HearderMenuData.filter((item) => item.id === 1 || item.id === 2)];
     const navSections = useMemo(
         () => [
             {

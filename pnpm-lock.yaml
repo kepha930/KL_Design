@@ -89,6 +89,10 @@ importers:
         specifier: 5.4.5
         version: 5.4.5
 
+  packages/frontend/dist: {}
+
+  packages/frontend/dist/types: {}
+
 packages:
 
   '@ampproject/remapping@2.3.0':
