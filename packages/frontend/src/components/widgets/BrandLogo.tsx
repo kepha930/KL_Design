@@ -84,6 +84,7 @@ const BrandLogo = () => {
                                 cursor: 'default',
                                 '&::after': {
                                     content: "'KL Design'",
+                                    fontFamily: 'Denton Test',
                                     position: 'absolute',
                                     top: 0,
                                     left: 0,
@@ -93,7 +94,6 @@ const BrandLogo = () => {
                                     WebkitBackgroundClip: 'text',
                                     backgroundClip: 'text',
                                     color: 'transparent',
-                                    filter: 'blur(5px)',
                                 },
                             }}
                         >
