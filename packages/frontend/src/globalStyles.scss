@@ -10,6 +10,13 @@
   }
 }
 
+@font-face {
+  font-family: 'Denton Test';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/DentonTest/DentonTest-Regular.otf') format('truetype');
+}
+
 @supports (-webkit-touch-callout: none) {
   .h-screen {
     height: stretch;
