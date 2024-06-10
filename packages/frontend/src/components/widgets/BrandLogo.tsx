@@ -54,10 +54,7 @@ const BrandLogo = () => {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        height: {
-                            xs: '100px',
-                            lg: '150px',
-                        },
+                        height: 'auto',
                         backgroundColor: 'transparent',
                     }}
                 >
@@ -73,7 +70,7 @@ const BrandLogo = () => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                                 height: 'auto',
-                                lineHeight: '1',
+                                lineHeight: '1.1',
                                 background: `radial-gradient(circle at ${smoothPosition.x}px ${smoothPosition.y}px, rgba(234, 74, 24, 0.8), rgba(238, 229, 216, 0.8))`,
                                 WebkitBackgroundClip: 'text',
                                 backgroundClip: 'text',
