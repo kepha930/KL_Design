@@ -62,7 +62,7 @@ const LandingMenuData = [
 const SelectedWorksData = [
     {
         id: 1,
-        title: 'Promotion Poster Series',
+        title: `Promotion Poster Series`,
         desc: 'Design / Photography',
         name: 'design',
         entryImg: {
@@ -70,7 +70,7 @@ const SelectedWorksData = [
             lg: '/images/selected_works/main_lg_1.jpg',
         },
         details: {
-            title: 'Promotion Poster Series',
+            title: 'Promotion\r\nPoster Series',
             desc: 'Shark Fin',
             date: 'August 2023',
             client: 'Shark Fin Keysborough',
@@ -280,7 +280,7 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
         },
         details: {
             title: 'Brand Guidelines',
-            desc: 'Branding',
+            desc: 'MMT Auto Group',
             date: 'February 2024',
             client: 'MMT Auto Group',
             service: 'Branding',
@@ -414,8 +414,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
             lg: '/images/selected_works/main_lg_4.jpg',
         },
         details: {
-            title: "Jo & Jim's",
-            desc: 'Business Cards',
+            title: "Business Cards",
+            desc: `Jo & Jim \r\n Service Group`,
             date: 'March 2023',
             client: 'Jo & Jim Service Group',
             service: 'Design',

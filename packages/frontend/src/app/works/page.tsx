@@ -2,7 +2,6 @@
 import {
     FC,
     memo,
-    Suspense,
     useState,
     useEffect,
     useRef,
@@ -17,12 +16,14 @@ import {
     IconButton,
     Backdrop,
     Fade,
+    Button,
 } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
 import { useAppSelector, useAppDispatch } from '@lib/hooks';
 import theme from '@root/theme';
 import CloseSvg from '@root/public/images/close.svg';
 import OpenSvg from '@root/public/images/open.svg';
+import Light from '@components/widgets/Light';
 
 const KL_theme = theme();
 
@@ -82,10 +83,10 @@ const WorkPage: FC<{
                             xs: '32px',
                             lg: '102px',
                         },
-                        paddingX: {
-                            xs: '12%',
-                            lg: '24%',
-                        },
+                        // paddingX: {
+                        //     xs: '12%',
+                        //     lg: '24%',
+                        // },
                         textShadow: '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                         letterSpacing: {
                             xs: '-0.32px',
@@ -126,7 +127,7 @@ const WorkPage: FC<{
                         letterSpacing: {
                             xs: '-0.32px',
                             lg: '-0.28px',
-                        },
+                        },                       
                     }}
                 >
                     {details.desc}
@@ -196,6 +197,16 @@ const Page: FC = memo(() => {
 
         return () => clearTimeout(timeout);
     }, [curWorkIndex]);
+
+    const handleNext = () => {
+        dispatch({
+            type: 'app/setSelectedWorksIndex',
+            payload: curWorkIndex === SelectedWorksData.length - 1 ? 0 : curWorkIndex + 1,
+        });
+        // scroll to top
+        window.scrollTo(0, 0);
+    };
+    
     return (
         <Fade in={show} timeout={1000} key={curWorkIndex}>
             <Box sx={{
@@ -232,9 +243,6 @@ const Page: FC = memo(() => {
                         sx={{
                             width: '100%',
                             height: '100%',
-                            borderBottomColor: '#272727',
-                            borderBottomWidth: '1px',
-                            borderBottomStyle: 'solid',
                             textAlign: 'center',
                         }}
                     >
@@ -256,12 +264,13 @@ const Page: FC = memo(() => {
                                     xs: '0.28px',
                                     lg: '0.32px',
                                 },
+                                marginBottom: "20px"
                             }}
                             color={KL_theme.palette.primary.light}
                         >
                             Next Client Work
                         </Typography>
-                        <Typography
+                        <Button
                             sx={{
                                 fontFamily: 'Denton Test',
                                 fontWeight: '660',
@@ -277,11 +286,17 @@ const Page: FC = memo(() => {
                                     xs: '-0.32px',
                                     lg: '-0.36px',
                                 },
+                                marginBottom: {
+                                    xs: '16px',
+                                    lg: '32px',
+                                },
+                                color: KL_theme.palette.secondary.dark,
                             }}
-                            color={KL_theme.palette.secondary.dark}
+                            onClick={handleNext}
                         >
                             {nextWorkTitle}
-                        </Typography>
+                        </Button>
+                        <Light />
                     </Box>
                 </Box>
                 <Backdrop
@@ -836,7 +851,7 @@ const Execution: FC<{
                         textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                     }}
                 >{`${
-                    isExpanded ? 'Close' : 'Open'
+                    isExpanded ? 'Hide' : 'Show'
                 } Design Process`}</Typography>
                 <IconButton
                     children={isExpanded ? CloseSvg() : OpenSvg()}

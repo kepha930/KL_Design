@@ -114,7 +114,7 @@ const Footer: FC<{
                                 }}
                             >
                                 <Typography
-                                    color={'info.main'}
+                                    color={item.id == 4 ? 'secondary.dark' : 'info.main'}
                                     sx={{
                                         fontSize: {
                                             xs: '10px',
