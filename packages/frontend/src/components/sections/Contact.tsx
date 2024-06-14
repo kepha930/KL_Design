@@ -52,7 +52,7 @@ const Contact: FC<{
                 sx={{
                     padding: {
                         xs: '32px 28px',
-                        lg: '72px 70px 40px',
+                        lg: '64px 70px',
                     },
                     width: '100%',
                     maxWidth: '1400px',
@@ -62,7 +62,7 @@ const Contact: FC<{
                     sx={{
                         padding: {
                             xs: '32px 21%',
-                            lg: '0 0 64px',
+                            lg: '0 0 32px',
                         },
                     }}
                 >
@@ -85,6 +85,10 @@ const Contact: FC<{
                         xs: '32px 0',
                         lg: '64px 0',
                     },
+                    marginBottom: {
+                        xs: '22px',
+                        lg: '54px',
+                    }
                 }}
                 >
                     <Box sx={{
@@ -229,13 +233,13 @@ const Contact: FC<{
                                             width: '200px',
                                             position: 'absolute',
                                             top: '-140%',
-                                            left: '15%',
+                                            left: '18%',
                                         }}
                                     >
                                         <Typography
                                             variant='label3'
+                                            color={lessThanLg ? 'primary.main' : 'primary.light'}
                                             sx={{
-                                                color: 'secondary.contrastText',
                                                 textAlign: 'center',
                                                 textShadow:
                                                     '5px 8px 19.8px rgba(0, 0, 0, 0.19)',

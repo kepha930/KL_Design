@@ -502,7 +502,7 @@ const DesignProcess: FC<{
                             flexDirection: 'column',
                             width: {
                                 xs: '100%',
-                                lg: '40%',
+                                lg: '426px',
                             },
                             gap: {
                                 xs: '8px',
@@ -513,7 +513,7 @@ const DesignProcess: FC<{
                                 lg: 'absolute',
                             },
                             right: {
-                                lg: '18%',
+                                lg: '24%',
                             },
                             bottom: {
                                 lg: '40px',
@@ -718,6 +718,10 @@ const Execution: FC<{
                                 xs: '24px',
                                 lg: '64px',
                             },
+                            width: {
+                                xs: '100%',
+                                lg: '426px',
+                            }
                         }}
                     >
                         {data!.details.execution.desc}

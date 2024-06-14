@@ -35,183 +35,194 @@ const Footer: FC<{
                     },
                 }}
             >
-                <Box
+                <Box 
                     sx={{
-                        borderBottomWidth: '1px',
-                        borderBottomStyle: 'solid',
-                        borderBottomColor: '#272727',
-                        height: {
-                            xs: '46px',
-                            lg: '68px',
-                        },
+                        width: '100%',
+                        maxWidth: '1400px',
                     }}
                 >
-                    <Typography
-                        color={'info.main'}
-                        variant='h4'
+                    <Box
                         sx={{
+                            borderBottomWidth: '1px',
+                            borderBottomStyle: 'solid',
+                            borderBottomColor: '#272727',
+                            height: {
+                                xs: '46px',
+                                lg: '68px',
+                            },
+                        }}
+                    >
+                        <Typography
+                            color={'info.main'}
+                            variant='h4'
+                            sx={{
+                                textAlign: {
+                                    xs: 'center',
+                                    lg: 'left',
+                                },
+                                '&:hover': {
+                                    color: 'secondary.main',
+                                    transition: 'color 0.3s ease-in-out',
+                                },
+                                '&:focus': {
+                                    color: 'secondary.main',
+                                    transition: 'color 0.3s ease-in-out',
+                                },
+                            }}
+                        >
+                            KL Design
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: {
+                                xs: 'column',
+                                lg: 'row-reverse',
+                            },
+                            justifyContent: {
+                                xs: 'center',
+                                lg: 'space-between',
+                            },
+                            padding: {
+                                xs: '16px 15px 32px',
+                                lg: '20px 0 16px',
+                            },
+                            gap: {
+                                xs: '16px',
+                                lg: '0',
+                            },
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                gap: {
+                                    xs: '14px',
+                                    lg: '32px',
+                                },
+                            }}
+                        >
+                            {HearderMenuData.map((item, index) => (
+                                <Link
+                                    key={item.id}
+                                    onClick={(e) =>
+                                        handleClick(e, item.id, item.route)
+                                    }
+                                    sx={{
+                                        textDecoration: 'none',
+                                    }}
+                                >
+                                    <Typography
+                                        color={
+                                            item.id == 4
+                                                ? 'secondary.dark'
+                                                : 'info.main'
+                                        }
+                                        variant='label3'
+                                        sx={{
+                                            '&:hover': {
+                                                color: 'secondary.main',
+                                                transition:
+                                                    'color 0.3s ease-in-out',
+                                            },
+                                            '&:focus': {
+                                                color: 'secondary.main',
+                                                transition:
+                                                    'color 0.3s ease-in-out',
+                                            },
+                                        }}
+                                    >
+                                        {item.text}
+                                    </Typography>
+                                </Link>
+                            ))}
+                        </Box>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                gap: {
+                                    xs: '24px',
+                                    lg: '32px',
+                                },
+                            }}
+                        >
+                            {ContactData.map((contact) => (
+                                <Link
+                                    key={contact.id}
+                                    href={contact.href}
+                                    target='_blank'
+                                >
+                                    <CustomeSvgIcon
+                                        id={contact.id}
+                                        width={{ xs: '14px', lg: '16px' }}
+                                        height={{ xs: '14px', lg: '16px' }}
+                                        children={contact.value_default()}
+                                    />
+                                </Link>
+                            ))}
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            color: 'primary.contrastText',
+                            fontWeight: 'bold',
                             textAlign: {
                                 xs: 'center',
                                 lg: 'left',
                             },
-                            '&:hover': {
-                                color: 'secondary.main',
-                                transition: 'color 0.3s ease-in-out',
-                            },
-                            '&:focus': {
-                                color: 'secondary.main',
-                                transition: 'color 0.3s ease-in-out',
+                            marginTop: {
+                                xs: '0',
+                                lg: '42px',
                             },
                         }}
                     >
-                        KL Design
-                    </Typography>
-                </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: {
-                            xs: 'column',
-                            lg: 'row-reverse',
-                        },
-                        justifyContent: {
-                            xs: 'center',
-                            lg: 'space-between',
-                        },
-                        padding: {
-                            xs: '16px 15px 32px',
-                            lg: '20px 0 16px',
-                        },
-                        gap: {
-                            xs: '16px',
-                            lg: '0',
-                        },
-                    }}
-                >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            gap: {
-                                xs: '14px',
-                                lg: '32px',
-                            },
-                        }}
-                    >
-                        {HearderMenuData.map((item, index) => (
+                        <Box
+                            sx={{
+                                fontSize: {
+                                    xs: '8px',
+                                    lg: '10px',
+                                },
+                            }}
+                        >
+                            Designed by{' '}
                             <Link
-                                key={item.id}
-                                onClick={(e) =>
-                                    handleClick(e, item.id, item.route)
-                                }
                                 sx={{
-                                    textDecoration: 'none',
+                                    '&:hover': {
+                                        color: 'secondary.main',
+                                        transition: 'color 0.3s ease-in-out',
+                                    },
                                 }}
-                            >
-                                <Typography
-                                    color={item.id == 4 ? 'secondary.dark' : 'info.main'}
-                                    variant='label3'
-                                    sx={{
-                                        '&:hover': {
-                                            color: 'secondary.main',
-                                            transition:
-                                                'color 0.3s ease-in-out',
-                                        },
-                                        '&:focus': {
-                                            color: 'secondary.main',
-                                            transition:
-                                                'color 0.3s ease-in-out',
-                                        },
-                                    }}
-                                >
-                                    {item.text}
-                                </Typography>
-                            </Link>
-                        ))}
-                    </Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            gap: {
-                                xs: '24px',
-                                lg: '32px',
-                            },
-                        }}
-                    >
-                        {ContactData.map((contact) => (
-                            <Link
-                                key={contact.id}
-                                href={contact.href}
+                                href='https://au.linkedin.com/in/kepha-leung-467a01151'
                                 target='_blank'
                             >
-                                <CustomeSvgIcon
-                                    id={contact.id}
-                                    width={{ xs: '14px', lg: '16px' }}
-                                    height={{ xs: '14px', lg: '16px' }}
-                                    children={contact.value_default()}
-                                />
+                                Kepha Leung
                             </Link>
-                        ))}
-                    </Box>
-                </Box>
-                <Box
-                    sx={{
-                        color: 'primary.contrastText',
-                        fontWeight: 'bold',
-                        textAlign: {
-                            xs: 'center',
-                            lg: 'left',
-                        },
-                        marginTop: {
-                            xs: '0',
-                            lg: '42px',
-                        },
-                    }}
-                >
-                    <Box
-                        sx={{
-                            fontSize: {
-                                xs: '8px',
-                                lg: '10px',
-                            },
-                        }}
-                    >
-                        Designed by{' '}
-                        <Link
+                        </Box>
+                        <Box
                             sx={{
-                                '&:hover': {
-                                    color: 'secondary.main',
-                                    transition: 'color 0.3s ease-in-out',
+                                fontSize: {
+                                    xs: '8px',
+                                    lg: '10px',
                                 },
                             }}
-                            href='https://au.linkedin.com/in/kepha-leung-467a01151'
-                            target='_blank'
                         >
-                            Kepha Leung
-                        </Link>
-                    </Box>
-                    <Box
-                        sx={{
-                            fontSize: {
-                                xs: '8px',
-                                lg: '10px',
-                            },
-                        }}
-                    >
-                        Developed by{' '}
-                        <Link
-                            sx={{
-                                '&:hover': {
-                                    color: 'secondary.main',
-                                    transition: 'color 0.3s ease-in-out',
-                                },
-                            }}
-                            href='https://www.linkedin.com/in/zuguang-tong-aa7041229'
-                            target='_blank'
-                        >
-                            Zuguang Tong
-                        </Link>
+                            Developed by{' '}
+                            <Link
+                                sx={{
+                                    '&:hover': {
+                                        color: 'secondary.main',
+                                        transition: 'color 0.3s ease-in-out',
+                                    },
+                                }}
+                                href='https://www.linkedin.com/in/zuguang-tong-aa7041229'
+                                target='_blank'
+                            >
+                                Zuguang Tong
+                            </Link>
+                        </Box>
                     </Box>
                 </Box>
             </Box>

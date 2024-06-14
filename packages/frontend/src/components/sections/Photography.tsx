@@ -93,7 +93,7 @@ const Photography: FC<{
                     sx={{
                         padding: {
                             xs: '32px 28px 32px',
-                            lg: '72px 70px 40px',
+                            lg: '64px 70px 64px',
                         },
                         borderRadius: {
                             xs: '16px 0',
