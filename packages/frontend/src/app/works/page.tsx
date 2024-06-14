@@ -1,13 +1,7 @@
 'use client';
+import { FC, memo, useState, useEffect, useRef, MouseEvent } from 'react';
 import {
-    FC,
-    memo,
-    useState,
-    useEffect,
-    useRef,
-    MouseEvent,
-} from 'react';
-import {
+    ThemeProvider,
     Box,
     Typography,
     useMediaQuery,
@@ -25,7 +19,7 @@ import CloseSvg from '@root/public/images/close.svg';
 import OpenSvg from '@root/public/images/open.svg';
 import Light from '@components/widgets/Light';
 
-const KL_theme = theme();
+const KL_theme = theme;
 
 const WorkPage: FC<{
     handleOpen: (e: MouseEvent) => void;
@@ -52,7 +46,7 @@ const WorkPage: FC<{
                 },
                 marginTop: {
                     xs: '0',
-                    lg: '-110px',
+                    lg: '-50px',
                 },
             }}
         >
@@ -67,34 +61,24 @@ const WorkPage: FC<{
                         lg: '32px',
                     },
                     padding: {
-                        xs: '0px 30px 20px',
+                        xs: '20px 30px 20px',
                         lg: '0px 0px 40px',
                     },
                 }}
             >
                 <Typography
                     color={KL_theme.palette.secondary.main}
+                    variant={lessThanLg ? 'h2' : 'd1'}
                     sx={{
                         width: '100%',
-                        fontWeight: 'bold',
                         textAlign: 'center',
-                        fontFamily: 'Denton Test',
-                        fontSize: {
-                            xs: '32px',
-                            lg: '102px',
-                        },
-                        // paddingX: {
-                        //     xs: '12%',
-                        //     lg: '24%',
-                        // },
                         textShadow: '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
-                        letterSpacing: {
-                            xs: '-0.32px',
-                            lg: '-1.02px;',
-                        },
-                        lineHeight: {
-                            xs: '38px',
-                            lg: '82px',
+                        display: 'flex',
+                        alignContent: 'flex-end',
+                        justifyContent: 'center',
+                        height: {
+                            xs: '65px',
+                            lg: '155px',
                         },
                     }}
                 >
@@ -105,29 +89,11 @@ const WorkPage: FC<{
                         xs: KL_theme.palette.primary.light,
                         lg: KL_theme.palette.info.main,
                     }}
+                    variant={lessThanLg ? 'body1' : 'h4'}
                     sx={{
                         width: '100%',
-                        fontWeight: {
-                            xs: '700',
-                            lg: '700',
-                        },
-                        fontFamily: {
-                            lg: 'Denton Test',
-                        },
                         textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                         textAlign: 'center',
-                        fontSize: {
-                            xs: '16px',
-                            lg: '28px',
-                        },
-                        lineHeight: {
-                            xs: '20px',
-                            lg: '34px',
-                        },
-                        letterSpacing: {
-                            xs: '-0.32px',
-                            lg: '-0.28px',
-                        },                       
                     }}
                 >
                     {details.desc}
@@ -201,123 +167,106 @@ const Page: FC = memo(() => {
     const handleNext = () => {
         dispatch({
             type: 'app/setSelectedWorksIndex',
-            payload: curWorkIndex === SelectedWorksData.length - 1 ? 0 : curWorkIndex + 1,
+            payload:
+                curWorkIndex === SelectedWorksData.length - 1
+                    ? 0
+                    : curWorkIndex + 1,
         });
         // scroll to top
         window.scrollTo(0, 0);
     };
-    
+
     return (
-        <Fade in={show} timeout={1000} key={curWorkIndex}>
-            <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}>
-                <WorkPage handleOpen={handleOpen} />
-                <DetailsContainer
-                    id={curWorkIndex + 1}
-                    handleOpen={handleOpen}
-                />
+        <ThemeProvider theme={KL_theme}>
+            <Fade in={show} timeout={1000} key={curWorkIndex}>
                 <Box
                     sx={{
-                        height: {
-                            xs: '191px',
-                            lg: '274px',
-                        },
-                        width: '100%',
-                        backgroundImage: {
-                            xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
-                            lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
-                        },
-                        backgroundSize: '100% 100%',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: '0% 0%',
-                        padding: {
-                            xs: '32px 30px 72px',
-                            lg: '52px 70px 104px',
-                        },
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                     }}
                 >
+                    <WorkPage handleOpen={handleOpen} />
+                    <DetailsContainer
+                        id={curWorkIndex + 1}
+                        handleOpen={handleOpen}
+                    />
                     <Box
                         sx={{
+                            height: {
+                                xs: '191px',
+                                lg: '274px',
+                            },
                             width: '100%',
-                            height: '100%',
-                            textAlign: 'center',
+                            backgroundImage: {
+                                xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
+                                lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
+                            },
+                            backgroundSize: '100% 100%',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: '0% 0%',
+                            padding: {
+                                xs: '32px 30px 72px',
+                                lg: '52px 70px 104px',
+                            },
                         }}
                     >
-                        <Typography
+                        <Box
                             sx={{
-                                fontFamily: {
-                                    lg: 'Denton Test',
+                                width: '100%',
+                                height: '100%',
+                                textAlign: 'center',
+                                padding: {
+                                    xs: '0 0 48px',
+                                    lg: '0 0 104px',
                                 },
-                                fontWeight: '700',
-                                fontSize: {
-                                    xs: '14px',
-                                    lg: '16px',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
-                                letterSpacing: {
-                                    xs: '0.28px',
-                                    lg: '0.32px',
-                                },
-                                marginBottom: "20px"
                             }}
-                            color={KL_theme.palette.primary.light}
                         >
-                            Next Client Work
-                        </Typography>
-                        <Button
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: '660',
-                                fontSize: {
-                                    xs: '32px',
-                                    lg: '36px',
-                                },
-                                lineHeight: {
-                                    xs: '38px',
-                                    lg: '44px',
-                                },
-                                letterSpacing: {
-                                    xs: '-0.32px',
-                                    lg: '-0.36px',
-                                },
-                                marginBottom: {
-                                    xs: '16px',
-                                    lg: '32px',
-                                },
-                                color: KL_theme.palette.secondary.dark,
-                            }}
-                            onClick={handleNext}
-                        >
-                            {nextWorkTitle}
-                        </Button>
-                        <Light />
+                            <Typography
+                                variant='label1'
+                                sx={{
+                                    marginBottom: '20px',
+                                }}
+                                color={KL_theme.palette.primary.light}
+                            >
+                                Next Client Work
+                            </Typography>
+                            <Button
+                                sx={{
+                                    marginBottom: {
+                                        xs: '32px',
+                                        lg: '48px',
+                                    },
+                                    color: KL_theme.palette.secondary.dark,
+                                    textTransform: 'none',
+                                }}
+                                onClick={handleNext}
+                            >
+                                <Typography variant='h2'>{nextWorkTitle}</Typography>
+                            </Button>
+                            <Light />
+                        </Box>
                     </Box>
-                </Box>
-                <Backdrop
-                    open={open}
-                    onClick={handleClose}
-                    sx={{
-                        backgroundColor: '#000',
-                        zIndex: (theme) => theme.zIndex.drawer + 1,
-                    }}
-                >
-                    <img
-                        src={curChildPhoto}
-                        style={{
-                            objectFit: 'contain',
-                            width: '100%',
-                            height: '100%',
+                    <Backdrop
+                        open={open}
+                        onClick={handleClose}
+                        sx={{
+                            backgroundColor: '#000',
+                            zIndex: (theme) => theme.zIndex.drawer + 1,
                         }}
-                    />
-                </Backdrop>
-            </Box>
-        </Fade>
+                    >
+                        <img
+                            src={curChildPhoto}
+                            style={{
+                                objectFit: 'contain',
+                                width: '100%',
+                                height: '100%',
+                            }}
+                        />
+                    </Backdrop>
+                </Box>
+            </Fade>
+        </ThemeProvider>
     );
 });
 
@@ -433,24 +382,11 @@ const DesignProcess: FC<{
                 >
                     <Typography
                         color={KL_theme.palette.primary.contrastText}
+                        variant={lessThanLg ? 'd4' : 'd3'}
                         sx={{
                             position: 'absolute',
                             right: '0',
                             top: '0',
-                            fontFamily: 'Denton Test',
-                            fontWeight: '900',
-                            fontSize: {
-                                xs: '64px',
-                                lg: '80px',
-                            },
-                            lineHeight: {
-                                xs: '52px',
-                                lg: '64px',
-                            },
-                            letterSpacing: {
-                                xs: '-0.64px',
-                                lg: '-0.8px',
-                            },
                         }}
                     >{`0${data?.id}`}</Typography>
                     <Box
@@ -476,38 +412,13 @@ const DesignProcess: FC<{
                         >
                             <Typography
                                 color={KL_theme.palette.warning.main}
-                                sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: '700',
-                                    fontSize: {
-                                        xs: '20px',
-                                        lg: '28px',
-                                    },
-                                    lineHeight: {
-                                        xs: '20px',
-                                        lg: '34px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '-0.2px',
-                                        lg: '-0.28px',
-                                    },
-                                }}
+                                variant='h4'
                             >
                                 Date:
                             </Typography>
                             <Typography
                                 color={KL_theme.palette.primary.main}
-                                sx={{
-                                    fontWeight: '700',
-                                    letterSpacing: {
-                                        xs: '-0.28px',
-                                        lg: '-0.32px',
-                                    },
-                                    lineHeight: {
-                                        xs: '16px',
-                                        lg: '20px',
-                                    },
-                                }}
+                                variant='label1'
                             >
                                 {details?.date}
                             </Typography>
@@ -525,38 +436,13 @@ const DesignProcess: FC<{
                         >
                             <Typography
                                 color={KL_theme.palette.warning.main}
-                                sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: '700',
-                                    fontSize: {
-                                        xs: '20px',
-                                        lg: '28px',
-                                    },
-                                    lineHeight: {
-                                        xs: '20px',
-                                        lg: '34px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '-0.2px',
-                                        lg: '-0.28px',
-                                    },
-                                }}
+                                variant='h4'
                             >
                                 Client:
                             </Typography>
                             <Typography
                                 color={KL_theme.palette.primary.main}
-                                sx={{
-                                    fontWeight: '700',
-                                    letterSpacing: {
-                                        xs: '-0.28px',
-                                        lg: '-0.32px',
-                                    },
-                                    lineHeight: {
-                                        xs: '16px',
-                                        lg: '20px',
-                                    },
-                                }}
+                                variant='label1'
                             >
                                 {details?.client}
                             </Typography>
@@ -574,38 +460,13 @@ const DesignProcess: FC<{
                         >
                             <Typography
                                 color={KL_theme.palette.warning.main}
-                                sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: '700',
-                                    fontSize: {
-                                        xs: '20px',
-                                        lg: '28px',
-                                    },
-                                    lineHeight: {
-                                        xs: '20px',
-                                        lg: '34px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '-0.2px',
-                                        lg: '-0.28px',
-                                    },
-                                }}
+                                variant='h4'
                             >
                                 Service Provided:
                             </Typography>
                             <Typography
                                 color={KL_theme.palette.primary.main}
-                                sx={{
-                                    fontWeight: '700',
-                                    letterSpacing: {
-                                        xs: '-0.28px',
-                                        lg: '-0.32px',
-                                    },
-                                    lineHeight: {
-                                        xs: '16px',
-                                        lg: '20px',
-                                    },
-                                }}
+                                variant='label1'
                             >
                                 {details?.service}
                             </Typography>
@@ -623,38 +484,13 @@ const DesignProcess: FC<{
                         >
                             <Typography
                                 color={KL_theme.palette.warning.main}
-                                sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: '700',
-                                    fontSize: {
-                                        xs: '20px',
-                                        lg: '28px',
-                                    },
-                                    lineHeight: {
-                                        xs: '20px',
-                                        lg: '34px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '-0.2px',
-                                        lg: '-0.28px',
-                                    },
-                                }}
+                                variant='h4'
                             >
                                 Software:
                             </Typography>
                             <Typography
                                 color={KL_theme.palette.primary.main}
-                                sx={{
-                                    fontWeight: '700',
-                                    letterSpacing: {
-                                        xs: '-0.28px',
-                                        lg: '-0.32px',
-                                    },
-                                    lineHeight: {
-                                        xs: '16px',
-                                        lg: '20px',
-                                    },
-                                }}
+                                variant='label1'
                             >
                                 {details?.software}
                             </Typography>
@@ -686,30 +522,13 @@ const DesignProcess: FC<{
                     >
                         <Typography
                             color={KL_theme.palette.warning.main}
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: {
-                                    xs: '700',
-                                    lg: '660',
-                                },
-                                fontSize: {
-                                    xs: '20px',
-                                    lg: '28px',
-                                },
-                                lineHeight: {
-                                    xs: '20px',
-                                    lg: '34px',
-                                },
-                            }}
+                            variant='h4'
                         >
                             The Brief
                         </Typography>
                         <Typography
                             color={KL_theme.palette.primary.main}
-                            sx={{
-                                fontWeight: 'normal',
-                                lineHeight: '20px',
-                            }}
+                            variant='body2'
                         >
                             {details?.brief}
                         </Typography>
@@ -718,6 +537,7 @@ const DesignProcess: FC<{
             </Box>
             <Box>
                 <Typography
+                    variant='h2'
                     sx={{
                         textAlign: {
                             xs: 'center',
@@ -726,20 +546,6 @@ const DesignProcess: FC<{
                         padding: {
                             xs: '36px 0 40px',
                             lg: '40px 0',
-                        },
-                        fontFamily: 'Denton Test',
-                        fontWeight: '700',
-                        fontSize: {
-                            xs: '32px',
-                            lg: '36px',
-                        },
-                        lineHeight: {
-                            xs: '38px',
-                            lg: '44px',
-                        },
-                        letterSpacing: {
-                            xs: '-0.32px',
-                            lg: '-0.36px',
                         },
                     }}
                     color={KL_theme.palette.secondary.main}
@@ -823,16 +629,16 @@ const Execution: FC<{
                     },
                     backgroundColor: KL_theme.palette.warning.main,
                     boxShadow: '13px 13px 29.7px 0px rgba(0, 0, 0, 0.26)',
-                    // boxShadow: '0 -20px 20px -10px rgba(20, 20, 20, 0.6), 0 -40px 40px -20px rgba(20, 20, 20, 0.3)',
                     padding: {
-                        xs: '27px 40px',
-                        lg: '64px 70px',
+                        xs: '27px 40px 40px',
+                        lg: '64px 70px 72px',
                     },
                     zIndex: 1,
                 }}
             >
                 <Typography
                     color={KL_theme.palette.secondary.main}
+                    variant='label1'
                     sx={{
                         position: 'absolute',
                         top: {
@@ -841,18 +647,10 @@ const Execution: FC<{
                         },
                         left: '50%',
                         transform: 'translateX(-50%)',
-                        fontWeight: 700,
                         textAlign: 'center',
-                        lineHeight: 1.25,
-                        letterSpacing: {
-                            xs: '0.28px',
-                            lg: '0.32px',
-                        },
                         textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                     }}
-                >{`${
-                    isExpanded ? 'Hide' : 'Show'
-                } Design Process`}</Typography>
+                >{`${isExpanded ? 'Hide' : 'Show'} Design Process`}</Typography>
                 <IconButton
                     children={isExpanded ? CloseSvg() : OpenSvg()}
                     onClick={toggleExpand}
@@ -884,19 +682,11 @@ const Execution: FC<{
                 >
                     <Typography
                         color={KL_theme.palette.secondary.main}
+                        variant='h2'
                         sx={{
                             textAlign: {
                                 xs: 'center',
                                 lg: 'left',
-                            },
-                            fontFamily: 'Denton Test',
-                            fontWeight: {
-                                xs: '700',
-                                lg: '660',
-                            },
-                            fontSize: {
-                                xs: '32px',
-                                lg: '36px',
                             },
                             marginBottom: {
                                 xs: '40px',
@@ -908,24 +698,12 @@ const Execution: FC<{
                     </Typography>
                     <Typography
                         color={KL_theme.palette.info.main}
+                        variant='h4'
                         sx={{
                             textAlign: 'left',
-                            fontFamily: 'Denton Test',
-                            fontWeight: {
-                                xs: '700',
-                                lg: '660',
-                            },
-                            fontSize: {
-                                xs: '20px',
-                                lg: '28px',
-                            },
-                            lineHeight: {
-                                xs: '20px',
-                                lg: '34px',
-                            },
                             marginBottom: {
-                                xs: '16px',
-                                lg: '24px',
+                                xs: '8px',
+                                lg: '16px',
                             },
                         }}
                     >
@@ -933,17 +711,9 @@ const Execution: FC<{
                     </Typography>
                     <Typography
                         color={KL_theme.palette.primary.light}
+                        variant='body2'
                         sx={{
                             textAlign: 'left',
-                            fontWeight: 'normal',
-                            fontSize: {
-                                xs: '16px',
-                                lg: '14px',
-                            },
-                            width: {
-                                xs: '100%',
-                                lg: '40%',
-                            },
                             marginBottom: {
                                 xs: '24px',
                                 lg: '64px',

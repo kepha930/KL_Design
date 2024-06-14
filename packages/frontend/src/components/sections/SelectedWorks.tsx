@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Typography, Link, Box, useTheme, useMediaQuery } from '@mui/material';
+import { Typography, Link, Box, useMediaQuery } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
 import Light from '@components/widgets/Light';
 import { useAppDispatch } from '@lib/hooks';
@@ -9,7 +9,7 @@ import theme from '@root/theme';
 const SelectedWorks: FC<{
     hrefId?: string;
 }> = memo(({ hrefId }) => {
-    const KL_Theme = theme();
+    const KL_Theme = theme;
     const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     return (
         <Box
@@ -18,8 +18,8 @@ const SelectedWorks: FC<{
                 width: '100%',
                 height: 'auto',
                 borderRadius: {
-                    xs: '0px 32px',
-                    lg: '0px 64px',
+                    xs: '0px 32px 0 0',
+                    lg: '0px 64px 0 0',
                 },
                 backgroundImage: `url('/images/bg/${
                     lessThanLg ? 'mobile' : 'desktop'
@@ -29,7 +29,7 @@ const SelectedWorks: FC<{
                 backgroundPosition: '0% 0%',
                 paddingBottom: {
                     xs: '20px',
-                    lg: '0',
+                    lg: '50px',
                 },
                 display: 'flex',
                 justifyContent: 'center',
@@ -44,32 +44,24 @@ const SelectedWorks: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '32px 28px',
-                            lg: '72px 10% 40px',
+                            xs: '32px 28px 0',
+                            lg: '72px 70px 0',
                         },
                     }}
                 >
                     <Box
                         sx={{
                             padding: {
-                                xs: '0 20%',
-                                lg: '0 0',
+                                xs: '0 20% 24px',
+                                lg: '0 0 40px',
                             },
                         }}
                     >
                         <Typography
+                            variant={lessThanLg ? 'h2' : 'd1'}
                             sx={{
                                 color: 'secondary.main',
-                                fontWeight: 'bold',
-                                textAlign: {
-                                    xs: 'center',
-                                    lg: 'center',
-                                },
-                                fontFamily: 'Denton Test',
-                                fontSize: {
-                                    xs: '32px',
-                                    lg: '102px',
-                                },
+                                textAlign: 'center',
                                 textShadow:
                                     '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                             }}
@@ -104,8 +96,8 @@ const Work: FC<{
     href?: string;
     onClick?: () => void;
 }> = memo(({ id, title, description, image, href }) => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
+    const KL_Theme = theme;
+    const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     const dispatch = useAppDispatch();
     const router = useRouter();
     const handleClick = () => {
@@ -127,9 +119,6 @@ const Work: FC<{
                         xs: '32px 10px 24px',
                         lg: '64px 0 24px',
                     },
-                    borderTopColor: '#272727',
-                    borderTopWidth: '1px',
-                    borderTopStyle: 'solid',
                     display: 'flex',
                     flexDirection: {
                         xs: 'column',
@@ -139,40 +128,26 @@ const Work: FC<{
                         xs: 'flex-start',
                         lg: 'space-between',
                     },
+                    borderTopColor: '#272727',
+                    borderTopStyle: 'solid',
+                    borderTopWidth: '1px',
                 }}
             >
                 <Typography
                     color={'primary.contrastText'}
-                    sx={{
-                        fontSize: {
-                            xs: '36px',
-                            lg: '80px',
-                        },
-                        fontWeight: 'bold',
-                        fontFamily: 'Denton Test',
-                    }}
+                    variant={lessThanLg ? 'h1' : 'd3'}
                 >{`0${id}`}</Typography>
                 <Box>
                     <Link
                         underline='none'
                         color={'secondary.dark'}
-                        sx={{
-                            fontSize: {
-                                xs: '28px',
-                                lg: '40px',
-                            },
-                            fontWeight: 'bold',
-                            fontFamily: 'Denton Test',
-                        }}
                         onClick={handleClick}
                     >
-                        {title}
+                        <Typography variant={lessThanLg ? 'h3':'h1'}>{title}</Typography>
                     </Link>
                     <Typography
                         color={'primary.contrastText'}
-                        sx={{
-                            fontSize: '16px',
-                        }}
+                        variant={lessThanLg ? 'body1' : 'label1'}
                     >
                         {description}
                     </Typography>

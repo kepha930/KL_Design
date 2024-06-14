@@ -1,5 +1,5 @@
 'use client';
-import { FC, memo, useEffect, Suspense, useState } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { Box, ThemeProvider } from '@mui/material';
 import theme from '@root/theme';
 import { useAppDispatch } from '@lib/hooks';
@@ -13,7 +13,7 @@ import { initialAppState } from '@lib/features/appSlice';
 
 const Home: FC = memo(({}, searchParams) => {
     const dispatch = useAppDispatch();
-    const KL_theme = theme();
+    const KL_theme = theme;
     useEffect(() => {
         dispatch({
             type: 'app/setBackgroundImageMobile',

@@ -1,21 +1,22 @@
 import { FC, memo, useEffect } from 'react';
-import { Typography, Box } from '@mui/material';
-
+import { Typography, Box, useMediaQuery } from '@mui/material';
+import theme from '@root/theme';
+const KL_theme = theme;
 const About: FC<{
     hrefId?: string;
 }> = memo(({
     hrefId
 }) => {
-    useEffect(() => {}, []);
+    const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     return (
         <Box
             id={hrefId}
             sx={{
-                width: '100%',
+                width: "100%",
                 height: 'auto',
                 padding: {
                     xs: '32px 20px',
-                    lg: '167px 64px',
+                    lg: '80px 64px 64px',
                 },
                 display: 'flex',
                 justifyContent: 'center',
@@ -23,11 +24,14 @@ const About: FC<{
         >            
             <Box
                 sx={{
-                    width: '100%',
+                    width: {
+                        xs: '100%',
+                        lg: '946px',
+                    },
                     maxWidth: '1400px',
                     minHeight: {
                         xs: '293px',
-                        lg: '320px',
+                        lg: '274px',
                     },
                     padding: {
                         xs: '32px 20px',
@@ -43,9 +47,12 @@ const About: FC<{
                         xs: 'column',
                         lg: 'row',
                     },
-                    justifyContent: 'center',
+                    justifyContent: {
+                        xs: 'center',
+                        lg: 'flex-start',
+                    },
                     gap: {
-                        xs: '32px',
+                        xs: '24px',
                         lg: '70px',
                     },
                 }}
@@ -57,17 +64,12 @@ const About: FC<{
                     }}
                 >
                     <Typography
+                        variant={lessThanLg? 'h2' : 'h1'}
                         sx={{
                             color: 'secondary.main',
-                            fontWeight: 'bold',
                             textAlign: {
                                 xs: 'center',
                                 lg: 'left',
-                            },
-                            fontFamily: 'Denton Test',
-                            fontSize: {
-                                xs: '32px',
-                                lg: '40px',
                             },
                         }}
                     >
@@ -82,6 +84,7 @@ const About: FC<{
                             xs: 'center',
                             lg: 'flex-end',
                         },
+                        maxWidth: '426px',
                         paddingTop: {
                             xs: 0,
                             lg: '14px',
@@ -100,6 +103,7 @@ const About: FC<{
                         }}
                     >
                         <Typography
+                            variant='body2'
                             sx={{
                                 width: {
                                     xs: '100%',
@@ -115,6 +119,7 @@ const About: FC<{
                             and a film camera geek.{' '}
                         </Typography>
                         <Typography
+                            variant='body2'
                             sx={{
                                 width: {
                                     xs: '100%',
@@ -137,6 +142,7 @@ const About: FC<{
                             </Box>{' '}
                         </Typography>
                         <Typography
+                            variant='body2'
                             sx={{
                                 width: {
                                     xs: '100%',

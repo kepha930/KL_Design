@@ -11,7 +11,7 @@ const Footer: FC<{
     bgcolor?: string;
     hrefId?: string;
 }> = memo(({ hrefId }) => {
-    const KL_theme = theme();
+    const KL_theme = theme;
     const dispatch = useAppDispatch();
     const router = useRouter();
     const handleClick = (e: MouseEvent, id: number, route: string) => {
@@ -48,17 +48,12 @@ const Footer: FC<{
                 >
                     <Typography
                         color={'info.main'}
+                        variant='h4'
                         sx={{
                             textAlign: {
                                 xs: 'center',
                                 lg: 'left',
                             },
-                            fontSize: {
-                                xs: '20px',
-                                lg: '28px',
-                            },
-                            fontWeight: 'bold',
-                            fontFamily: 'Denton Test',
                             '&:hover': {
                                 color: 'secondary.main',
                                 transition: 'color 0.3s ease-in-out',
@@ -115,14 +110,8 @@ const Footer: FC<{
                             >
                                 <Typography
                                     color={item.id == 4 ? 'secondary.dark' : 'info.main'}
+                                    variant='label3'
                                     sx={{
-                                        fontSize: {
-                                            xs: '10px',
-                                            lg: '14px',
-                                        },
-                                        fontWeight: 'bold',
-                                        lineHeight: '20px',
-                                        letterSpacing: '0.32px',
                                         '&:hover': {
                                             color: 'secondary.main',
                                             transition:

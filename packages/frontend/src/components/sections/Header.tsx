@@ -22,7 +22,7 @@ import { useNavObserver } from '@hooks/useNavObserver';
 
 export const headerID = 'headerNav';
 const Header: FC = memo(() => {
-    const KL_theme = theme();
+    const KL_theme = theme;
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -193,24 +193,16 @@ const Header: FC = memo(() => {
                                     height: '100%',
                                     width: 'auto',
                                     textDecoration: 'none',
+                                    display: 'flex',
+                                    alignItems: 'center',
                                 }}
                             >
                                 <Typography
                                     color={'info.main'}
+                                    variant='h4'
                                     sx={{
-                                        fontFamily: 'Denton Test',
-                                        fontWeight: 'bold',
                                         fontStyle: 'normal',
-                                        fontSize: {
-                                            xs: '20px',
-                                            lg: '28px',
-                                        },
                                         width: '100%',
-                                        height: '100%',
-                                        lineHeight: {
-                                            xs: '30px',
-                                            lg: '52px',
-                                        },
                                         '&:hover': {
                                             color: 'secondary.main',
                                             transition:
@@ -270,16 +262,13 @@ const Header: FC = memo(() => {
                                         }}
                                     >
                                         <Typography
+                                            variant='label1'
                                             color={
                                                 (item.href == activeHeaderTab || item.id == 4)
                                                     ? 'secondary.main'
                                                     : 'info.main'
                                             }
                                             sx={{
-                                                fontSize: '1rem',
-                                                fontWeight: 'bold',
-                                                lineHeight: '20px',
-                                                letterSpacing: '0.32px',
                                                 '&:hover': {
                                                     color: 'secondary.main',
                                                     transition:
@@ -334,7 +323,6 @@ const Header: FC = memo(() => {
                                             sx={{
                                                 textDecoration: 'none',
                                                 textAlign: 'center',
-                                                fontWeight: 'bold',
                                                 color:
                                                     (item.href == activeHeaderTab || item.id == 4)
                                                         ? 'secondary.main'
@@ -354,7 +342,7 @@ const Header: FC = memo(() => {
                                             }}
                                             href={`${item.route}`}
                                         >
-                                            {item.text}
+                                            <Typography variant='label1'>{item.text}</Typography>
                                         </Link>
                                     </MenuItem>
                                 );

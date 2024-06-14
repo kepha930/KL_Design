@@ -164,9 +164,9 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
         },
         details: {
             title: 'Responsive Website',
-            desc: 'Jo & Jim Services Group',
+            desc: `Jo & Jim\r\nServices Group`,
             date: 'November 2023',
-            client: 'Jo & Jim Service Group',
+            client: `Jo & Jim Service Group`,
             service: 'Website Design',
             software: 'Figma / Illustrator / Photoshop',
             brief: "Jo & Jim Service Group requires a user-friendly, single-page website catering to aged care services and elderly clients. The website should feature intuitive navigation, be fully responsive, and offer seamless switching between English and Chinese, effectively showcasing their services and contact details.",

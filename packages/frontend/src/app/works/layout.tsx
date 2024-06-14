@@ -13,7 +13,7 @@ export default function SelectedWorksLayout({
     children: React.ReactNode;
 }>) {
     const dispatch = useAppDispatch();
-    const KL_theme = theme();
+    const KL_theme = theme;
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     useEffect(() => {
         const backgroundMobile = `url(/images/bg/mobile_work_page_bg_top.png)`;

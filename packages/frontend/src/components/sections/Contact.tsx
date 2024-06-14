@@ -9,7 +9,7 @@ import theme from '@root/theme';
 const Contact: FC<{
     hrefId?: string;
 }> = memo(({hrefId}) => {
-    const KL_theme = theme();
+    const KL_theme = theme;
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down("lg"));
     const arrowSvg = (
         <svg
@@ -29,12 +29,15 @@ const Contact: FC<{
         <Box
             id={hrefId}
             sx={{
-                marginTop: '-20px',
+                marginTop: {
+                    xs: '-20px',
+                    lg: '-50px',
+                },
                 width: '100%',
                 height: 'auto',
                 borderRadius: {
-                    xs: '0px 32px',
-                    lg: '0px 64px',
+                    xs: '0px 32px 0 0',
+                    lg: '0px 64px 0 0',
                 },
                 backgroundImage:
                     `url('/images/bg/${lessThanLg?'mobile':'desktop'}_contact.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)`,
@@ -49,7 +52,7 @@ const Contact: FC<{
                 sx={{
                     padding: {
                         xs: '32px 28px',
-                        lg: '72px 10% 40px',
+                        lg: '72px 70px 40px',
                     },
                     width: '100%',
                     maxWidth: '1400px',
@@ -58,24 +61,16 @@ const Contact: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '0 21%',
-                            lg: '0 0',
+                            xs: '32px 21%',
+                            lg: '0 0 64px',
                         },
                     }}
                 >
                     <Typography
+                        variant={lessThanLg ? 'h2' : 'd1'}
                         sx={{
                             color: 'secondary.main',
-                            fontWeight: 'bold',
-                            textAlign: {
-                                xs: 'center',
-                                lg: 'center',
-                            },
-                            fontFamily: 'Denton Test',
-                            fontSize: {
-                                xs: '32px',
-                                lg: '102px',
-                            },
+                            textAlign: 'center',
                             textShadow: '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                         }}
                     >
@@ -84,28 +79,28 @@ const Contact: FC<{
                 </Box>
                 <Light />
                 {/* Name */}
-                <Box>
-                    <Box>
+                <Box
+                sx={{
+                    padding: {
+                        xs: '32px 0',
+                        lg: '64px 0',
+                    },
+                }}
+                >
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '16px',
+                    }}>
                         <Typography
+                            variant='h2'
                             color='info.main'
-                            sx={{
-                                fontSize: {
-                                    xs: '32px',
-                                    lg: '36px',
-                                },
-                                fontFamily: 'Denton Test',
-                            }}
                         >
                             Kepha
                         </Typography>
                         <Typography
                             color='primary.light'
-                            sx={{
-                                fontSize: {
-                                    xs: '16px',
-                                    lg: '18px',
-                                },
-                            }}
+                            variant='body1'
                         >
                             noun
                         </Typography>
@@ -114,16 +109,24 @@ const Contact: FC<{
                                 color: 'primary.contrastText',
                                 listStyleType: 'disc',
                                 listStylePosition: 'inside',
-                                paddingX: '0',
+                                padding: '0',
                                 fontWeight: {
                                     xs: 'bold',
                                     lg: 'normal',
                                 },
                                 fontSize: {
                                     xs: '14px',
-                                    lg: '18px',
+                                    lg: '16px',
                                 },
-                            }}
+                                lineHeight: {
+                                    xs: '16px',
+                                    lg: '20px',
+                                },
+                                letterSpacing: {
+                                    xs: '0.28px',
+                                    lg: '0.32px',
+                                },
+                            }}                            
                         >
                             <ListItem
                                 sx={{
@@ -153,12 +156,11 @@ const Contact: FC<{
                     </Box>
                     <Typography
                         color={'primary.light'}
+                        variant='d1'
                         sx={{
-                            fontFamily: 'Denton Test',
-                            fontWeight: 'bold',
                             letterSpacing: '-1.02px',
                             fontSize: '102px',
-                            marginBottom: {
+                            marginY: {
                                 xs: '32px',
                                 lg: '0',
                             },
@@ -192,6 +194,7 @@ const Contact: FC<{
                                 sx={{
                                     display: 'flex',
                                     justifyContent: 'center',
+                                    alignItems: 'center',
                                     flexDirection: {
                                         xs: 'row-reverse',
                                         lg: 'row',
@@ -203,11 +206,7 @@ const Contact: FC<{
                                 }}
                             >
                                 <Typography
-                                    sx={{
-                                        fontWeight: 'bold',
-                                        fontSize: '16px',
-                                        lineHeight: '2rem'
-                                    }}
+                                    variant='label1'
                                     color={'info.main'}
                                 >
                                     kphaleung@gmail.com
@@ -234,15 +233,10 @@ const Contact: FC<{
                                         }}
                                     >
                                         <Typography
+                                            variant='label3'
                                             sx={{
                                                 color: 'secondary.contrastText',
                                                 textAlign: 'center',
-                                                fontSize: {
-                                                    xs: '10px',
-                                                    lg: '13px',
-                                                },
-                                                fontWeight: 'bold',
-                                                letterSpacing: '0.2px',
                                                 textShadow:
                                                     '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                                                 boxSizing: 'border-box',

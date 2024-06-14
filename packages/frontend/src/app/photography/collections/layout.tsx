@@ -13,7 +13,7 @@ export default function PhotographyLayout({
     children: React.ReactNode;
 }>) {
     const dispatch = useAppDispatch();
-    const KL_theme = theme();
+    const KL_theme = theme;
     useEffect(() => {
         const background = '';
         dispatch({ type: 'app/setBackgroundImageMobile', payload: background });

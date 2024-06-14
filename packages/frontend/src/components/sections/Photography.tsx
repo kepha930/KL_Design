@@ -14,22 +14,25 @@ import theme from '@root/theme';
 const Photography: FC<{
     hrefId?: string;
 }> = memo(({ hrefId }) => {
-    const KL_Theme = theme();
+    const KL_Theme = theme;
     const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     return (
         <Box
             id={hrefId}
             sx={{
-                marginTop: '-20px',
+                marginTop: {
+                    xs: '-20px',
+                    lg: '-50px',
+                },
                 paddingBottom: {
                     xs: '20px',
-                    lg: '0',
+                    lg: '50px',
                 },
                 width: '100%',
                 height: 'auto',
                 borderRadius: {
-                    xs: '0px 32px',
-                    lg: '0px 64px',
+                    xs: '0px 32px 0 0',
+                    lg: '0px 64px 0 0',
                 },
                 backgroundImage: `url('/images/bg/${
                     lessThanLg ? 'mobile' : 'desktop'
@@ -50,20 +53,21 @@ const Photography: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '32px 28px 24px',
-                            lg: '72px 10% 40px',
+                            xs: '32px 28px 0',
+                            lg: '72px 70px 0',
                         },
                     }}
                 >
                     <Box
                         sx={{
                             padding: {
-                                xs: '0 21%',
-                                lg: '0 0',
+                                xs: '0 21% 24px',
+                                lg: '0 0 40px',
                             },
                         }}
                     >
                         <Typography
+                            variant={lessThanLg ? 'h2' : 'd1'}
                             sx={{
                                 color: 'secondary.main',
                                 fontWeight: 'bold',
@@ -88,8 +92,8 @@ const Photography: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '0 28px 32px',
-                            lg: '72px 20% 40px',
+                            xs: '32px 28px 32px',
+                            lg: '72px 70px 40px',
                         },
                         borderRadius: {
                             xs: '16px 0',

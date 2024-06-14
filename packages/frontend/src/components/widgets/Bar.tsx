@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import TabArrowLeft from '@root/public/images/tab_arrow_left.svg';
 import TabArrowRight from '@root/public/images/tab_arrow_right.svg';
 
-const KL_Theme = theme();
+const KL_Theme = theme;
 const Bar: FC<{
     contentLength: number;
     name: string;

@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import theme from '@root/theme';
 
 const Light: FC = memo(() => {
-    const KL_Theme = theme();
+    const KL_Theme = theme;
     return (
         <Box
             sx={{

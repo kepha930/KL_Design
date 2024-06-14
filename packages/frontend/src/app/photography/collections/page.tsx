@@ -7,6 +7,8 @@ import {
     ImageListItem,
     Backdrop,
     Fade,
+    useMediaQuery,
+    ThemeProvider,
 } from '@mui/material';
 import { PhotographyPageData } from '@data/siteData';
 import { useAppSelector, useAppDispatch } from '@lib/hooks';
@@ -18,7 +20,8 @@ const Page: FC = memo(() => {
     const [curChildPhoto, setCurChildPhoto] = useState('');
     const curPhotoIndex = useAppSelector((state) => state.app.photographyIndex);
     const data = PhotographyPageData[curPhotoIndex];
-    const KL_theme = theme();
+    const KL_theme = theme;
+    const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch({ type: 'app/setActiveHeaderTab', payload: 'photography' });
@@ -39,114 +42,110 @@ const Page: FC = memo(() => {
         setOpen(false);
     };
     return (
-        <Fade in={show} timeout={1000} key={curPhotoIndex}>
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    width: '100%',
-                    maxWidth: '1400px',
-                    height: 'auto',
-                    paddingBottom: {
-                        xs: '64px',
-                        lg: '104px',
-                    },
-                    marginTop: {
-                        xs: '0',
-                        lg: '-110px',
-                    },
-                }}
-            >
+        <ThemeProvider theme={KL_theme}>
+            <Fade in={show} timeout={1000} key={curPhotoIndex}>
                 <Box
                     sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
                         width: '100%',
-                        padding: {
-                            xs: '0px 30px 20px',
-                            lg: '0px 0px 64px',
+                        maxWidth: '1400px',
+                        height: 'auto',
+                        paddingBottom: {
+                            xs: '64px',
+                            lg: '104px',
+                        },
+                        marginTop: {
+                            xs: '0',
+                            lg: '-110px',
                         },
                     }}
                 >
                     <Box
                         sx={{
-                            borderBottom: {
-                                xs: '1px solid #272727',
-                                lg: '2px solid #272727',
-                            },
                             width: '100%',
                             padding: {
-                                xs: '0 0px 20px',
-                                lg: '0 0 0px',
+                                xs: '0px 30px 32px',
+                                lg: '60px 0px 64px',
                             },
                         }}
                     >
-                        <Typography
-                            color={KL_theme.palette.secondary.main}
+                        <Box
                             sx={{
-                                width: '100%',
-                                fontWeight: 'bold',
-                                textAlign: 'center',
-                                fontFamily: 'Denton Test',
-                                fontSize: {
-                                    xs: '32px',
-                                    lg: '102px',
+                                borderBottom: {
+                                    xs: '1px solid #272727',
+                                    lg: '2px solid #272727',
                                 },
-                                textShadow:
-                                    '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
+                                width: '100%',
+                                padding: {
+                                    xs: '0 0px 24px',
+                                    lg: '0 0 40px',
+                                },
                             }}
                         >
-                            {data.title}
-                        </Typography>
-                    </Box>
-                </Box>
-                <Box
-                    sx={{
-                        width: '100%',
-                        padding: {
-                            xs: '0 28px 0px',
-                            lg: '0 70px 0px',
-                        },
-                    }}
-                >
-                    <ImageList cols={2} gap={4} variant='quilted'>
-                        {data.collection.map((item, index) => (
-                            <ImageListItem
-                                key={item.id}
-                                cols={item.cols}
-                                rows={item.rows}
-                                onClick={handleOpen}
+                            <Typography
+                                color={KL_theme.palette.secondary.main}
+                                variant={lessThanLg ? 'h2' : 'd1'}
+                                sx={{
+                                    textAlign: 'center',
+                                    textShadow:
+                                        '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
+                                }}
                             >
-                                <img
-                                    src={item.url}
-                                    loading='lazy'
-                                    style={{
-                                        objectFit: 'contain',
-                                    }}
-                                />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
-                    <Backdrop
-                        open={open}
-                        onClick={handleClose}
+                                {data.title}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box
                         sx={{
-                            backgroundColor: '#000',
-                            zIndex: (theme) => theme.zIndex.drawer + 1,
+                            width: '100%',
+                            padding: {
+                                xs: '0 28px 0px',
+                                lg: '0 70px 0px',
+                            },
                         }}
                     >
-                        <img
-                            src={curChildPhoto}
-                            style={{
-                                objectFit: 'contain',
-                                width: '100%',
-                                height: '100%',
+                        <ImageList cols={2} gap={lessThanLg ? 8 : 16} variant='quilted'>
+                            {data.collection.map((item, index) => (
+                                <ImageListItem
+                                    key={item.id}
+                                    cols={item.cols}
+                                    rows={item.rows}
+                                    onClick={handleOpen}
+                                >
+                                    <img
+                                        src={item.url}
+                                        loading='lazy'
+                                        style={{
+                                            objectFit: 'contain',
+                                        }}
+                                    />
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                        <Backdrop
+                            open={open}
+                            onClick={handleClose}
+                            sx={{
+                                backgroundColor: '#000',
+                                zIndex: (theme) => theme.zIndex.drawer + 1,
                             }}
-                        />
-                    </Backdrop>
+                        >
+                            <img
+                                src={curChildPhoto}
+                                style={{
+                                    objectFit: 'contain',
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                            />
+                        </Backdrop>
+                    </Box>
                 </Box>
-            </Box>
-        </Fade>
+            </Fade>
+        </ThemeProvider>
     );
 });
 export default Page;

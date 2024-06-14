@@ -44,7 +44,7 @@ const Landing: FC = memo(() => {
                 justifyContent: 'center',
                 padding: {
                     xs: '0',
-                    lg: '150px 0 0',
+                    lg: '180px 0 0',
                 },
             }}
         >
@@ -63,7 +63,7 @@ const Landing: FC = memo(() => {
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: {
-                            xs: '80px 0 15px',
+                            xs: '160px 0 33px',
                             lg: '0 20%',
                         },                    
                     }}
@@ -80,8 +80,8 @@ const Landing: FC = memo(() => {
                         justifyContent: 'space-between',
                         width: '100%',
                         padding: {
-                            xs: '0 0 30px',
-                            lg: '100px 20% 0',
+                            xs: '0 0 50px',
+                            lg: '180px 20% 0',
                         },
                         gap: {
                             xs: '12px',
@@ -106,8 +106,8 @@ const Landing: FC = memo(() => {
                                     underline='none'
                                 >
                                     <Typography
+                                        variant='label1'
                                         sx={{
-                                            fontWeight: 'bold',
                                             '&:hover': {
                                                 color: 'secondary.main',
                                                 transition:
