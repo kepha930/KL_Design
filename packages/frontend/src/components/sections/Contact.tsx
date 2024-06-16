@@ -46,20 +46,21 @@ const Contact: FC<{
                 backgroundPosition: '0% 0%',
                 display: 'flex',
                 justifyContent: 'center',
+                padding: {
+                    xs: '32px 28px',
+                    lg: '64px 70px',
+                },
             }}
         >
             <Box
                 sx={{
-                    padding: {
-                        xs: '32px 28px',
-                        lg: '64px 70px',
-                    },
                     width: '100%',
                     maxWidth: '1400px',
                 }}
             >
                 <Box
                     sx={{
+                        width: '100%',
                         padding: {
                             xs: '32px 21%',
                             lg: '0 0 32px',
@@ -113,7 +114,10 @@ const Contact: FC<{
                                 color: 'primary.contrastText',
                                 listStyleType: 'disc',
                                 listStylePosition: 'inside',
-                                padding: '0',
+                                paddingLeft: {
+                                    xs: '8px',
+                                    lg: '12px',
+                                },
                                 fontWeight: {
                                     xs: 'bold',
                                     lg: 'normal',

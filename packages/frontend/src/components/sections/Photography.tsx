@@ -42,6 +42,10 @@ const Photography: FC<{
                 backgroundPosition: '0% 0%',
                 display: 'flex',
                 justifyContent: 'center',
+                paddingX: {
+                    xs: '28px',
+                    lg: '70px',
+                },
             }}
         >
             <Box
@@ -52,9 +56,9 @@ const Photography: FC<{
             >
                 <Box
                     sx={{
-                        padding: {
-                            xs: '32px 28px 0',
-                            lg: '72px 70px 0',
+                        paddingTop: {
+                            xs: '32px',
+                            lg: '72px',
                         },
                     }}
                 >
@@ -92,8 +96,8 @@ const Photography: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '32px 28px 32px',
-                            lg: '64px 70px 64px',
+                            xs: '32px 0 32px',
+                            lg: '64px 0 64px',
                         },
                         borderRadius: {
                             xs: '16px 0',

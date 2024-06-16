@@ -25,6 +25,8 @@ const Footer: FC<{
                 sx={{
                     width: '100%',
                     backgroundColor: 'warning.main',
+                    display: 'flex',
+                    justifyContent: 'center',
                     height: {
                         xs: '273px',
                         lg: '287px',
@@ -46,9 +48,9 @@ const Footer: FC<{
                             borderBottomWidth: '1px',
                             borderBottomStyle: 'solid',
                             borderBottomColor: '#272727',
-                            height: {
-                                xs: '46px',
-                                lg: '68px',
+                            paddingBottom: {
+                                xs: '16px',
+                                lg: '32px',
                             },
                         }}
                     >
@@ -86,7 +88,7 @@ const Footer: FC<{
                             },
                             padding: {
                                 xs: '16px 15px 32px',
-                                lg: '20px 0 16px',
+                                lg: '32px 0 16px',
                             },
                             gap: {
                                 xs: '16px',

@@ -33,6 +33,10 @@ const SelectedWorks: FC<{
                 },
                 display: 'flex',
                 justifyContent: 'center',
+                paddingX: {
+                    xs: '28px',
+                    lg: '70px',
+                },
             }}
         >
             <Box
@@ -44,8 +48,8 @@ const SelectedWorks: FC<{
                 <Box
                     sx={{
                         padding: {
-                            xs: '32px 28px 0',
-                            lg: '72px 70px 0',
+                            xs: '32px 0px 0',
+                            lg: '72px 0px 0',
                         },
                     }}
                 >
@@ -105,14 +109,7 @@ const Work: FC<{
         router.push("/works");
     };
     return (
-        <Box
-            sx={{
-                padding: {
-                    xs: '0 27px',
-                    lg: '0 70px',
-                },
-            }}
-        >
+        <Box>
             <Box
                 sx={{
                     padding: {

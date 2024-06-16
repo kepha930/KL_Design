@@ -77,7 +77,6 @@ const WorkPage: FC<{
                         alignContent: 'flex-end',
                         justifyContent: 'center',
                         height: {
-                            xs: '65px',
                             lg: '155px',
                         },
                     }}

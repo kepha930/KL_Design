@@ -124,6 +124,7 @@ const Header: FC = memo(() => {
                     width: '100%',
                     height: 'auto',
                     position: 'fixed',
+                    
                     top: 0,
                     paddingTop: {
                         xs: '60px',
@@ -136,6 +137,7 @@ const Header: FC = memo(() => {
                         lg: '32px',
                     },
                     display: showHeader ? 'flex' : 'none',
+                    justifyContent: 'center',
                     zIndex: 1000,
                     backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)'
                 }}
@@ -143,6 +145,7 @@ const Header: FC = memo(() => {
                 <Box
                     sx={{
                         width: '100%',
+                        maxWidth: '1400px',
                         height: {
                             xs: '46px',
                             lg: '84px',
