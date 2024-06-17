@@ -37,7 +37,7 @@ const Footer: FC<{
                     },
                 }}
             >
-                <Box 
+                <Box
                     sx={{
                         width: '100%',
                         maxWidth: '1400px',
@@ -54,26 +54,33 @@ const Footer: FC<{
                             },
                         }}
                     >
-                        <Typography
-                            color={'info.main'}
-                            variant='h4'
+                        <Link
+                            href='/'
                             sx={{
-                                textAlign: {
-                                    xs: 'center',
-                                    lg: 'left',
-                                },
-                                '&:hover': {
-                                    color: 'secondary.main',
-                                    transition: 'color 0.3s ease-in-out',
-                                },
-                                '&:focus': {
-                                    color: 'secondary.main',
-                                    transition: 'color 0.3s ease-in-out',
-                                },
+                                textDecoration: 'none',
                             }}
                         >
-                            KL Design
-                        </Typography>
+                            <Typography
+                                color={'info.main'}
+                                variant='h4'
+                                sx={{
+                                    textAlign: {
+                                        xs: 'center',
+                                        lg: 'left',
+                                    },
+                                    '&:hover': {
+                                        color: 'secondary.main',
+                                        transition: 'color 0.3s ease-in-out',
+                                    },
+                                    '&:focus': {
+                                        color: 'secondary.main',
+                                        transition: 'color 0.3s ease-in-out',
+                                    },
+                                }}
+                            >
+                                KL Design
+                            </Typography>
+                        </Link>
                     </Box>
                     <Box
                         sx={{

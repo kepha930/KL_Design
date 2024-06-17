@@ -192,10 +192,6 @@ const Page: FC = memo(() => {
                     />
                     <Box
                         sx={{
-                            height: {
-                                xs: '191px',
-                                lg: '274px',
-                            },
                             width: '100%',
                             backgroundImage: {
                                 xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
@@ -205,8 +201,8 @@ const Page: FC = memo(() => {
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: '0% 0%',
                             padding: {
-                                xs: '32px 30px 72px',
-                                lg: '52px 70px 104px',
+                                xs: '32px 30px',
+                                lg: '52px 70px',
                             },
                         }}
                     >
@@ -214,17 +210,13 @@ const Page: FC = memo(() => {
                             sx={{
                                 width: '100%',
                                 height: '100%',
-                                textAlign: 'center',
-                                padding: {
-                                    xs: '0 0 48px',
-                                    lg: '0 0 104px',
-                                },
+                                textAlign: 'center',                                
                             }}
                         >
                             <Typography
                                 variant='label1'
                                 sx={{
-                                    marginBottom: '20px',
+                                    margin: '0 0 16px',
                                 }}
                                 color={KL_theme.palette.primary.light}
                             >
@@ -232,9 +224,9 @@ const Page: FC = memo(() => {
                             </Typography>
                             <Button
                                 sx={{
-                                    marginBottom: {
-                                        xs: '32px',
-                                        lg: '48px',
+                                    padding: {
+                                        xs: '0 0 32px',
+                                        lg: '0 0 52px',
                                     },
                                     color: KL_theme.palette.secondary.dark,
                                     textTransform: 'none',

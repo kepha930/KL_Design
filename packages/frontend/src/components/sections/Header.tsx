@@ -1,6 +1,14 @@
 'use client';
-import { FC, memo, useMemo, useState, useCallback, MouseEvent, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import {
+    FC,
+    memo,
+    useMemo,
+    useState,
+    useCallback,
+    MouseEvent,
+    useEffect,
+} from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import {
     ThemeProvider,
@@ -85,7 +93,9 @@ const Header: FC = memo(() => {
             />
         </svg>
     );
-    const excludeNavSections = [...HearderMenuData.filter((item) => item.id === 1 || item.id === 2)];
+    const excludeNavSections = [
+        ...HearderMenuData.filter((item) => item.id === 1 || item.id === 2),
+    ];
     const navSections = useMemo(
         () => [
             {
@@ -98,23 +108,51 @@ const Header: FC = memo(() => {
         ],
         []
     );
-    const activeHeaderTab = useAppSelector((state) => state.app.activeHeaderTab);
+    const activeHeaderTab = useAppSelector(
+        (state) => state.app.activeHeaderTab
+    );
     const showHeader = useAppSelector((state) => state.app.showHeader);
     const dispatch = useAppDispatch();
     const router = useRouter();
-
-    const intersectionHandler = useCallback((section: SectionId | null) => {        
-        section && dispatch({ type: 'app/setActiveHeaderTab', payload: section });
+    const params = useParams();
+    const intersectionHandler = useCallback((section: SectionId | null) => {
+        section &&
+            dispatch({ type: 'app/setActiveHeaderTab', payload: section });
         // console.log("section", section, activeHeaderTab);
     }, []);
-
+    const scrollToAnchor = (anchor: string) => {
+        const anchorElement = document.getElementById(anchor);
+        if (anchorElement) {
+            // console.log('scrolling to', anchorElement, anchorElement.getBoundingClientRect().top, window.scrollY, window.innerHeight / 2, anchorElement.clientHeight / 2);
+            const elePosition =
+                anchorElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition =
+                elePosition -
+                window.innerHeight / 2 +
+                anchorElement.clientHeight / 2;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth',
+            });
+        }
+    };
     useNavObserver(
         navSections.map((section) => `#${section.href}`).join(','),
         intersectionHandler
     );
+    useEffect(() => {
+        const hash = window.location.hash;
+        if(hash) {
+            const anchor = hash.replace('#', '');
+            console.log('hash', anchor);
+            scrollToAnchor(anchor);
+        }
+    }, [params]);
     const handleClick = (e: MouseEvent, id: number, route: string) => {
+        e.preventDefault();
         if (id == 1)
             dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+
         router.push(route);
     };
     return (
@@ -124,7 +162,7 @@ const Header: FC = memo(() => {
                     width: '100%',
                     height: 'auto',
                     position: 'fixed',
-                    
+
                     top: 0,
                     paddingTop: {
                         xs: '60px',
@@ -139,7 +177,8 @@ const Header: FC = memo(() => {
                     display: showHeader ? 'flex' : 'none',
                     justifyContent: 'center',
                     zIndex: 1000,
-                    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)'
+                    backgroundImage:
+                        'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)',
                 }}
             >
                 <Box
@@ -267,7 +306,8 @@ const Header: FC = memo(() => {
                                         <Typography
                                             variant='label1'
                                             color={
-                                                (item.href == activeHeaderTab || item.id == 4)
+                                                item.href == activeHeaderTab ||
+                                                item.id == 4
                                                     ? 'secondary.main'
                                                     : 'info.main'
                                             }
@@ -327,7 +367,9 @@ const Header: FC = memo(() => {
                                                 textDecoration: 'none',
                                                 textAlign: 'center',
                                                 color:
-                                                    (item.href == activeHeaderTab || item.id == 4)
+                                                    item.href ==
+                                                        activeHeaderTab ||
+                                                    item.id == 4
                                                         ? 'secondary.main'
                                                         : 'info.main',
                                                 width: '100%',
@@ -343,9 +385,17 @@ const Header: FC = memo(() => {
                                                         'color 0.3s ease-in-out',
                                                 },
                                             }}
-                                            href={`${item.route}`}
+                                            onClick={(e) =>
+                                                handleClick(
+                                                    e,
+                                                    item.id,
+                                                    item.route
+                                                )
+                                            }
                                         >
-                                            <Typography variant='label1'>{item.text}</Typography>
+                                            <Typography variant='label1'>
+                                                {item.text}
+                                            </Typography>
                                         </Link>
                                     </MenuItem>
                                 );
