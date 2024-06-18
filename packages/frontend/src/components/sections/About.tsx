@@ -15,7 +15,7 @@ const About: FC<{
                 width: "100%",
                 height: 'auto',
                 padding: {
-                    xs: '32px 20px',
+                    xs: '32px 27px',
                     lg: '80px 64px 64px',
                 },
                 display: 'flex',
@@ -34,7 +34,7 @@ const About: FC<{
                         lg: '274px',
                     },
                     padding: {
-                        xs: '32px 20px',
+                        xs: '32px 27px',
                         lg: '64px 189px 64px 96px',
                     },
                     borderRadius: {
