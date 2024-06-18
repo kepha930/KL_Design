@@ -11,10 +11,45 @@
 }
 
 @font-face {
+  font-family: 'Denton Test Thin';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-Thin.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Denton Test Light';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-Light.otf') format('truetype');
+}
+
+@font-face {
   font-family: 'Denton Test';
   font-style: normal;
-  font-weight: 400;
   src: url('/fonts/DentonTest/DentonTest-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Denton Test Medium';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-Medium.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Denton Test Bold';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-Bold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Denton Test ExtraBold';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-ExtraBold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Denton Test Black';
+  font-style: normal;
+  src: url('/fonts/DentonTest/DentonTest-Black.otf') format('truetype');
 }
 
 @supports (-webkit-touch-callout: none) {

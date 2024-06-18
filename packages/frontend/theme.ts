@@ -93,138 +93,122 @@ const theme = createTheme({
     theme.typography.fontSize = theme.breakpoints.up('lg') ? 16 : 14;
     theme.typography.d1 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Black',
         fontSize: '90px',
         lineHeight: '72px',
         letterSpacing: '-0.9px',
-        fontWeight: '900',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Black',
             fontSize: '102px',
             lineHeight: '82px',
             letterSpacing: '-1.02px',
-            fontWeight: '900',
         }
     }
     theme.typography.d2 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Black',
         fontSize: '80px',
         lineHeight: '64px',
         letterSpacing: '-0.8px',
-        fontWeight: '900',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Black',
             fontSize: '90px',
             lineHeight: '72px',
             letterSpacing: '-0.9px',
-            fontWeight: '900',
         }
     }
     theme.typography.d3 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Black',
         fontSize: '72px',
         lineHeight: '58px',
         letterSpacing: '-0.72px',
-        fontWeight: '900',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Black',
             fontSize: '80px',
             lineHeight: '64px',
             letterSpacing: '-0.8px',
-            fontWeight: '900',
         }
     }
     theme.typography.d4 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Black',
         fontSize: '64px',
         lineHeight: '52px',
         letterSpacing: '-0.64px',
-        fontWeight: '900',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Black',
             fontSize: '72px',
             lineHeight: '58px',
             letterSpacing: '-0.72px',
-            fontWeight: '900',
         }
     }
     theme.typography.h1 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Bold',
         fontSize: '36px',
         lineHeight: '44px',
         letterSpacing: '-0.36px',
-        fontWeight: '700',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Bold',
             fontSize: '40px',
             lineHeight: '48px',
             letterSpacing: '-0.4px',
-            fontWeight: '700',
         }
     }
     theme.typography.h2 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Bold',
         fontSize: '32px',
         lineHeight: '38px',
         letterSpacing: '-0.32px',
-        fontWeight: '700',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Bold',
             fontSize: '36px',
             lineHeight: '44px',
             letterSpacing: '-0.36px',
-            fontWeight: '700',
         }
     }
     theme.typography.h3 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Bold',
         fontSize: '28px',
         lineHeight: '34px',
         letterSpacing: '-0.28px',
-        fontWeight: '700',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Bold',
             fontSize: '32px',
             lineHeight: '38px',
             letterSpacing: '-0.32px',
-            fontWeight: '700',
         }
     }
     theme.typography.h4 = {
         display: 'block',
-        fontFamily: 'Denton Test',
+        fontFamily: 'Denton Test Bold',
         fontSize: '20px',
         lineHeight: '20px',
         letterSpacing: '-0.2px',
-        fontWeight: '700',
         // lg breakpoint
         [theme.breakpoints.up('lg')]: {
             display: 'block',
-            fontFamily: 'Denton Test',
+            fontFamily: 'Denton Test Bold',
             fontSize: '28px',
             lineHeight: '34px',
             letterSpacing: '-0.28px',
-            fontWeight: '700',
         }
     }
     theme.typography.body1 = {
