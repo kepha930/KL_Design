@@ -283,7 +283,7 @@ const DetailsContainer: FC<{
                 paddingTop: {
                     xs: isExpanded
                         ? `calc(${processesHeight}px - 20px)`
-                        : `600px`,
+                        : `650px`,
                     lg: isExpanded
                         ? `calc(${processesHeight}px - 30px)`
                         : `700px`,
