@@ -8,9 +8,10 @@ import {
     ImageList,
     ImageListItem,
     IconButton,
+    Button,
     Backdrop,
     Fade,
-    Button,
+    SvgIcon,
 } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
 import { useAppSelector, useAppDispatch } from '@lib/hooks';
@@ -210,7 +211,7 @@ const Page: FC = memo(() => {
                             sx={{
                                 width: '100%',
                                 height: '100%',
-                                textAlign: 'center',                                
+                                textAlign: 'center',
                             }}
                         >
                             <Typography
@@ -233,7 +234,9 @@ const Page: FC = memo(() => {
                                 }}
                                 onClick={handleNext}
                             >
-                                <Typography variant='h2'>{nextWorkTitle}</Typography>
+                                <Typography variant='h2'>
+                                    {nextWorkTitle}
+                                </Typography>
                             </Button>
                             <Light />
                         </Box>
@@ -642,8 +645,7 @@ const Execution: FC<{
                         textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                     }}
                 >{`${isExpanded ? 'Hide' : 'Show'} Design Process`}</Typography>
-                <IconButton
-                    children={isExpanded ? CloseSvg() : OpenSvg()}
+                <Button
                     onClick={toggleExpand}
                     sx={{
                         position: 'absolute',
@@ -661,7 +663,16 @@ const Execution: FC<{
                         },
                         zIndex: 2,
                     }}
-                />
+                >
+                    <SvgIcon
+                        sx={{
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    >
+                        {isExpanded ? <CloseSvg /> : <OpenSvg />}
+                    </SvgIcon>
+                </Button>
                 <Box
                     sx={{
                         paddingX: {
@@ -712,7 +723,7 @@ const Execution: FC<{
                             width: {
                                 xs: '100%',
                                 lg: '426px',
-                            }
+                            },
                         }}
                     >
                         {data!.details.execution.desc}
