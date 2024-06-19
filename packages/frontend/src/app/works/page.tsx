@@ -184,6 +184,13 @@ const Page: FC = memo(() => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        backgroundImage: {
+                            xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
+                            lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
+                        },
+                        backgroundSize: '100% auto',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: '0% 100%',
                     }}
                 >
                     <WorkPage handleOpen={handleOpen} />
@@ -194,13 +201,13 @@ const Page: FC = memo(() => {
                     <Box
                         sx={{
                             width: '100%',
-                            backgroundImage: {
-                                xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
-                                lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
-                            },
-                            backgroundSize: '100% 100%',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: '0% 0%',
+                            // backgroundImage: {
+                            //     xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
+                            //     lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
+                            // },
+                            // backgroundSize: '100% 100%',
+                            // backgroundRepeat: 'no-repeat',
+                            // backgroundPosition: '0% 0%',
                             padding: {
                                 xs: '32px 30px',
                                 lg: '52px 70px',
