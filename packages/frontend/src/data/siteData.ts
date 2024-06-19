@@ -635,9 +635,9 @@ const PhotographyPageData = [
     },
     {
         id: 1,
-        title: 'Lifestyle',
+        title: 'Candid',
         entryImg: '/images/photography/lifestyle_entry.png',
-        name: 'lifestyle',
+        name: 'candid',
         href: '/photography/collections',
         collection: [
             {
