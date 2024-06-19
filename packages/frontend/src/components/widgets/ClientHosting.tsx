@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Fade } from '@mui/material';
 import Loading from '@app/loading';
-const ClientOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ClientHosting: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     useEffect(() => {
         const handleLoad = () => setIsLoaded(true);
@@ -22,4 +22,4 @@ const ClientOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     );
 };
 
-export default ClientOnly;
+export default ClientHosting;
