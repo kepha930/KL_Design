@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { Box, Toolbar, Button, SvgIcon } from '@mui/material';
+import { Box, Toolbar, Button, SvgIcon, ThemeProvider } from '@mui/material';
 import theme from '@root/theme';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import TabArrowLeft from '@root/public/images/tab_arrow_left.svg';
@@ -30,149 +30,149 @@ const Bar: FC<{
         }
         const dispatch = useAppDispatch();
         const handleNext = () => {
-            if(name === 'photography'){
+            if (name === 'photography') {
                 dispatch({
                     type: 'app/setPhotographyIndex',
                     payload: curIndex === contentLength - 1 ? 0 : curIndex + 1,
                 });
-
-            }else if(name === 'selectedWorks'){
+            } else if (name === 'selectedWorks') {
                 dispatch({
                     type: 'app/setSelectedWorksIndex',
                     payload: curIndex === contentLength - 1 ? 0 : curIndex + 1,
                 });
-
             }
         };
         return (
-            <Box
-                sx={{
-                    position: 'relative',
-                    width: '100%',
-                    maxWidth: '1400px',
-                    height: 'auto',
-                    paddingTop: {
-                        xs: '30px',
-                        lg: '80px',
-                    },
-                    paddingX: {
-                        xs: '28px',
-                        lg: '0px',
-                    },
-                    ".MuiToolbar-root": {
-                        paddingLeft: 0,
-                        paddingRight: 0,
-                    }
-                }}
-            >
-                <Toolbar
+            <ThemeProvider theme={KL_Theme}>
+                <Box
                     sx={{
+                        position: 'relative',
                         width: '100%',
+                        height: 'auto',
+                        paddingTop: {
+                            xs: '30px',
+                            lg: '80px',
+                        },
+                        paddingX: {
+                            xs: '16px',
+                            lg: '32px',
+                        },
                         display: 'flex',
-                        justifyContent: 'space-between',
-                        paddingLeft: 0,
-                        paddingRight: 0,
+                        justifyContent: 'center',
+                        '.MuiToolbar-root': {
+                            paddingLeft: 0,
+                            paddingRight: 0,
+                        },
                     }}
                 >
-                    <Button
-                        href='/'
-                        startIcon={
-                            <SvgIcon
-                                sx={{
-                                    width: {
-                                        xs: '12px',
-                                        lg: '16px',
-                                    },
-                                    height: {
-                                        xs: '12px',
-                                        lg: '16px',
-                                    },
-                                    path: {
-                                        stroke: tabColor,
-                                    },
-                                }}
-                                children={TabArrowLeft()}
-                            />
-                        }
+                    <Toolbar
                         sx={{
-                            textTransform: 'none',
-                            fontWeight: 'bold',
-                            width: {
-                                xs: '86px',
-                                lg: '120px',
-                            },
-                            height: {
-                                xs: '24px',
-                                lg: '40px',
-                            },
-                            boxSizing: 'border-box',
-                            textAlign: 'center',
-                            color: tabColor,
-                            padding: {
-                                xs: '4px 16px',
-                                lg: '10px 24px',
-                            },
-                            borderRadius: {
-                                xs: '0 12px',
-                                lg: '0 20px',
-                            },
-                            borderColor: tabColor,
-                            borderWidth: '1px',
-                            borderStyle: 'solid',
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            maxWidth: '1400px',
                         }}
                     >
-                        Home
-                    </Button>
-                    <Button
-                        onClick={handleNext}
-                        endIcon={
-                            <SvgIcon
-                                sx={{
-                                    width: {
-                                        xs: '12px',
-                                        lg: '16px',
-                                    },
-                                    height: {
-                                        xs: '12px',
-                                        lg: '16px',
-                                    },
-                                    path: {
-                                        stroke: tabColor,
-                                    },
-                                }}
-                                children={TabArrowRight()}
-                            />
-                        }
-                        sx={{
-                            textTransform: 'none',
-                            fontWeight: 'bold',
-                            width: {
-                                xs: '86px',
-                                lg: '120px',
-                            },
-                            height: {
-                                xs: '24px',
-                                lg: '40px',
-                            },
-                            textAlign: 'center',
-                            color: tabColor,
-                            padding: {
-                                xs: '4px 16px',
-                                lg: '10px 24px',
-                            },
-                            borderRadius: {
-                                xs: '0 12px',
-                                lg: '0 20px',
-                            },
-                            borderColor: tabColor,
-                            borderWidth: '1px',
-                            borderStyle: 'solid',
-                        }}
-                    >
-                        Next
-                    </Button>
-                </Toolbar>
-            </Box>
+                        <Button
+                            href='/'
+                            startIcon={
+                                <SvgIcon
+                                    sx={{
+                                        width: {
+                                            xs: '12px',
+                                            lg: '16px',
+                                        },
+                                        height: {
+                                            xs: '12px',
+                                            lg: '16px',
+                                        },
+                                        path: {
+                                            stroke: tabColor,
+                                        },
+                                    }}
+                                    children={TabArrowLeft()}
+                                />
+                            }
+                            sx={{
+                                textTransform: 'none',
+                                fontWeight: 'bold',
+                                width: {
+                                    xs: '86px',
+                                    lg: '120px',
+                                },
+                                height: {
+                                    xs: '24px',
+                                    lg: '40px',
+                                },
+                                boxSizing: 'border-box',
+                                textAlign: 'center',
+                                color: tabColor,
+                                padding: {
+                                    xs: '4px 16px',
+                                    lg: '10px 24px',
+                                },
+                                borderRadius: {
+                                    xs: '0 12px',
+                                    lg: '0 20px',
+                                },
+                                borderColor: tabColor,
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                            }}
+                        >
+                            Home
+                        </Button>
+                        <Button
+                            onClick={handleNext}
+                            endIcon={
+                                <SvgIcon
+                                    sx={{
+                                        width: {
+                                            xs: '12px',
+                                            lg: '16px',
+                                        },
+                                        height: {
+                                            xs: '12px',
+                                            lg: '16px',
+                                        },
+                                        path: {
+                                            stroke: tabColor,
+                                        },
+                                    }}
+                                    children={TabArrowRight()}
+                                />
+                            }
+                            sx={{
+                                textTransform: 'none',
+                                fontWeight: 'bold',
+                                width: {
+                                    xs: '86px',
+                                    lg: '120px',
+                                },
+                                height: {
+                                    xs: '24px',
+                                    lg: '40px',
+                                },
+                                textAlign: 'center',
+                                color: tabColor,
+                                padding: {
+                                    xs: '4px 16px',
+                                    lg: '10px 24px',
+                                },
+                                borderRadius: {
+                                    xs: '0 12px',
+                                    lg: '0 20px',
+                                },
+                                borderColor: tabColor,
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                            }}
+                        >
+                            Next
+                        </Button>
+                    </Toolbar>
+                </Box>
+            </ThemeProvider>
         );
     }
 );

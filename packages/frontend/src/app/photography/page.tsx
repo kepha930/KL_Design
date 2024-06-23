@@ -74,8 +74,8 @@ const Home: FC = memo(() => {
                             sx={{
                                 width: '100%',
                                 textAlign: 'center',
-                                textShadow:
-                                    '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
+                                // textShadow:
+                                //     '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                             }}
                             variant={lessThanLg ? 'h2' : 'd1'}
                         >
@@ -159,10 +159,10 @@ const PhotographyCard: FC<{
                 onClick={handleClick}
                 underline='none'
                 sx={{
-                    borderRadius: {
-                        xs: '0px 16px',
-                        lg: '0px 32px',
-                    },
+                    // borderRadius: {
+                    //     xs: '0px 16px',
+                    //     lg: '0px 32px',
+                    // },
                 }}
             >
                 <img

@@ -19,6 +19,7 @@ const Page: FC = memo(() => {
     const [open, setOpen] = useState(false);
     const [curChildPhoto, setCurChildPhoto] = useState('');
     const curPhotoIndex = useAppSelector((state) => state.app.photographyIndex);
+    const [photoGap, setPhotoGap] = useState(8);
     const data = PhotographyPageData[curPhotoIndex];
     const KL_theme = theme;
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
@@ -27,6 +28,7 @@ const Page: FC = memo(() => {
         dispatch({ type: 'app/setActiveHeaderTab', payload: 'photography' });
     }, []);
     useEffect(() => {
+        setPhotoGap(curPhotoIndex === 0 ? lessThanLg ? 8 : 16 : lessThanLg ? 4 : 8);
         setShow(false);
         const timeout = setTimeout(() => {
             setShow(true);
@@ -74,10 +76,10 @@ const Page: FC = memo(() => {
                     >
                         <Box
                             sx={{
-                                borderBottom: {
-                                    xs: '1px solid #272727',
-                                    lg: '2px solid #272727',
-                                },
+                                // borderBottom: {
+                                //     xs: '1px solid #272727',
+                                //     lg: '2px solid #272727',
+                                // },
                                 width: '100%',
                                 padding: {
                                     xs: '0 0px 24px',
@@ -90,8 +92,8 @@ const Page: FC = memo(() => {
                                 variant={lessThanLg ? 'h2' : 'd1'}
                                 sx={{
                                     textAlign: 'center',
-                                    textShadow:
-                                        '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
+                                    // textShadow:
+                                    //     '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
                                 }}
                             >
                                 {data.title}
@@ -107,7 +109,7 @@ const Page: FC = memo(() => {
                             },
                         }}
                     >
-                        <ImageList cols={2} gap={lessThanLg ? 8 : 16} variant='quilted'>
+                        <ImageList cols={2} gap={photoGap} variant='quilted'>
                             {data.collection.map((item, index) => (
                                 <ImageListItem
                                     key={item.id}

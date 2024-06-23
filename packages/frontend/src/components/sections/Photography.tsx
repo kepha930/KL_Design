@@ -43,7 +43,7 @@ const Photography: FC<{
                 display: 'flex',
                 justifyContent: 'center',
                 paddingX: {
-                    xs: '28px',
+                    xs: '27.5px',
                     lg: '70px',
                 },
             }}
@@ -99,13 +99,13 @@ const Photography: FC<{
                             xs: '32px 0 32px',
                             lg: '64px 0 64px',
                         },
-                        borderRadius: {
-                            xs: '16px 0',
-                            lg: '32px 0',
-                        },
+                        // borderRadius: {
+                        //     xs: '16px 0',
+                        //     lg: '32px 0',
+                        // },
                     }}
                 >
-                    <ImageList cols={3} gap={4} variant='quilted'>
+                    <ImageList cols={40} gap={4} variant='quilted'>
                         {PhotographyData.map((item, index) => {
                             return (
                                 <ImageListItem
@@ -117,7 +117,7 @@ const Photography: FC<{
                                         src={item.url}
                                         loading='lazy'
                                         style={{
-                                            objectFit: 'contain',
+                                            objectFit: 'cover',
                                         }}
                                     />
                                 </ImageListItem>
