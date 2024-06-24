@@ -118,7 +118,6 @@ const Header: FC = memo(() => {
     const intersectionHandler = useCallback((section: SectionId | null) => {
         section &&
             dispatch({ type: 'app/setActiveHeaderTab', payload: section });
-        // console.log("section", section, activeHeaderTab);
     }, []);
     const scrollToAnchor = (anchor: string) => {
         const anchorElement = document.getElementById(anchor);
@@ -144,7 +143,7 @@ const Header: FC = memo(() => {
         const hash = window.location.hash;
         if(hash) {
             const anchor = hash.replace('#', '');
-            console.log('hash', anchor);
+            // console.log('hash', anchor);
             scrollToAnchor(anchor);
         }
     }, [params]);

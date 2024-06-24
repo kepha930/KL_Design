@@ -7,7 +7,6 @@ import {
     useMediaQuery,
     ImageList,
     ImageListItem,
-    IconButton,
     Button,
     Backdrop,
     Fade,

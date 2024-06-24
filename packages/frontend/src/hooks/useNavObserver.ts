@@ -18,14 +18,14 @@ export const useNavObserver = (
         const headings = document.querySelectorAll(selectors);
         const headingsArray = Array.from(headings);
         const headerWrapper = document.getElementById(headerID);
-
+        const isHome = headingsArray.length > 2;
         // Create the IntersectionObserver API
         const newObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     const currentY = entry.boundingClientRect.y;
                     const id = entry.target.getAttribute('id');
-                    if (headerWrapper) {
+                    if (headerWrapper && isHome) {
                         // Create a decision object
                         const decision = {
                             id,
