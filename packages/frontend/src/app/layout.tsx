@@ -14,11 +14,11 @@ const dm_sans = DM_Sans({
 // const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'KL Design',
-    description: "KephaL's Design Portfolio",
+    description: "Kepha Leung Design",
     generator: 'Next.js',
     applicationName: 'KL DESIGN',
     referrer: 'origin-when-cross-origin',
-    keywords: [],
+    keywords: ["Keppha Leung", "Design", "Branding", "Business Card", "Poster Design", "Photography", "Web Design", "UI/UX Design"],
     icons: {
         icon: '/favicon.ico',
     },
