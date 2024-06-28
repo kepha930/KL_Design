@@ -21,9 +21,9 @@ const SelectedWorks: FC<{
                     xs: '0px 32px 0 0',
                     lg: '0px 64px 0 0',
                 },
-                backgroundImage: `url('/images/bg/${
-                    lessThanLg ? 'mobile' : 'desktop'
-                }_work.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)`,
+                backgroundImage: lessThanLg
+                    ? `url('/images/bg/mobile_work.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)`
+                    : `url('/images/bg/desktop_work.jpg'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)`,
                 backgroundSize: '100% 100%',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: '0% 0%',
@@ -106,7 +106,7 @@ const Work: FC<{
     const router = useRouter();
     const handleClick = () => {
         dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
-        router.push("/works");
+        router.push('/works');
     };
     return (
         <Box>
@@ -140,7 +140,9 @@ const Work: FC<{
                         color={'secondary.dark'}
                         onClick={handleClick}
                     >
-                        <Typography variant={lessThanLg ? 'h3':'h1'}>{title}</Typography>
+                        <Typography variant={lessThanLg ? 'h3' : 'h1'}>
+                            {title}
+                        </Typography>
                     </Link>
                     <Typography
                         color={'primary.contrastText'}

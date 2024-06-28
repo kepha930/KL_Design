@@ -14,7 +14,7 @@ export const initialAppState: AppState = {
     backgroundImageMobile:
         "url('/images/bg/mobile_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)",
     backgroundImageDesktop:
-        "url('/images/bg/desktop_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)",
+        "url('/images/bg/desktop_home.jpg'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)",
     backgroundColor: '',
     photographyIndex: 0,
     selectedWorksIndex: 0,
