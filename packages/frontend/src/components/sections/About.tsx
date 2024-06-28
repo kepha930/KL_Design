@@ -84,7 +84,10 @@ const About: FC<{
                             xs: 'center',
                             lg: 'flex-end',
                         },
-                        maxWidth: '426px',
+                        alignItems: {
+                            xs: 'center',
+                            lg: 'flex-start',                        
+                        },
                         paddingTop: {
                             xs: 0,
                             lg: '14px',
@@ -96,6 +99,8 @@ const About: FC<{
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
+                            alignItems: 'center',
+                            maxWidth: '426px',
                             gap: {
                                 xs: '8px',
                                 lg: '12px',

@@ -155,7 +155,7 @@ const Contact: FC<{
                             <ListItem
                                 sx={{
                                     display: 'list-item',
-                                    padding: '0',
+                                    paddingX: '0',
                                 }}
                             >
                                 a team-spirited person
